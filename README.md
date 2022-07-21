@@ -90,3 +90,61 @@ Signature: 5RX2shcdMcnzQYrew7xCvvn2rtMUnpWsxsNAyhzQ6qvuxBKQv2EHUoqgb11rgbJrv8UDA
 
 ```
 
+
+# Limit the total supply of your token and burn your token
+
+spl-token supply 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV   -u devnet  
+
+```
+1000
+```
+
+- 禁止mint
+
+spl-token authorize 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV  mint --disable  -u devnet  
+
+
+```
+Updating 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV
+  Current mint authority: HwhmQLK4QrEW3Upy6Ndg9chZG6PXR732fssgw418fgWM
+  New mint authority: disabled
+
+Signature: 5NHV4wHoDeyVFzqbozEqTxdb8LZN4bkZscY32qYkZRRdsJea6Lghtb5u6xKPvcdL9M6pd2gvjYWq3mjfMzAPx3ko
+
+```
+
+- 如果再次mint，会报错
+
+spl-token mint 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV  1000 -u devnet 
+```
+ 
+Minting 1000 tokens
+  Token: 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV
+  Recipient: 8e3iDZD8hM8SPmNsFjJGudSpbATqhaC9qXVLKQuKhQWS
+RPC response error -32002: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x5 [5 log messages]
+```
+
+- burn 
+
+spl-token burn 8e3iDZD8hM8SPmNsFjJGudSpbATqhaC9qXVLKQuKhQWS 100   -u devnet 
+
+```
+ 
+Burn 100 tokens
+  Source: 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV
+Account could not be parsed as token account: pubkey=5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV
+darren@darrendeMBP airdrop-project % 
+spl-token burn 8e3iDZD8hM8SPmNsFjJGudSpbATqhaC9qXVLKQuKhQWS 100   -u devnet
+Burn 100 tokens
+  Source: 8e3iDZD8hM8SPmNsFjJGudSpbATqhaC9qXVLKQuKhQWS
+
+Signature: qAb889GDvdmt6mBqTwVxsXpKpsDq8MUY5LTpYjkK3SKMDU9m7kkWr49MKkJK7qLU4rweoSpFUjNJPFaiCeZcvHM
+```
+- 测试 
+
+
+```
+darren@darrendeMBP airdrop-project % spl-token balance 5MSiTuMyATfsh56DVS6mLkqoJBkjU77q3j8Kqx9kNqV -u devnet 
+900
+```
+
